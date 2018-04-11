@@ -1,0 +1,23 @@
+{
+  "name": "property-manager",
+  "version": "0.0.0",
+  "server": false,
+  "private": true,
+  "scripts": {
+    "test": "",
+    "build": ""
+  },
+  "dependencies": {
+    "nodemon": "^1.17.1",
+    "turbo360": "latest",
+    "vertex360": "latest"
+  },
+  "devDependencies": {
+    "express": "latest",
+    "rimraf": "^2.6.2"
+  },
+  "deploy": [
+    "."
+  ],
+  "format": "vertex"
+}
