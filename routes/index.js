@@ -3,14 +3,16 @@ const turbo = require('turbo360')({site_id: process.env.TURBO_APP_ID})
 const vertex = require('vertex360')({site_id: process.env.TURBO_APP_ID})
 const router = vertex.router()
 
-router.get('/', (req, res) => {
-	const apartments = [
-		{title: 'Detroit great find', numRooms: 4},
-		{title: 'Luxury apartment', numRooms: 5},
-		{title: '4 bedroom apartment', numRooms: 4}
-	]
+router.get('/:name/:city/:state', (req, res) => {
+	turbo.create('building', {
+		name: req.params.name, 
+		city: req.params.city, 
+		state: req.params.state
+	}).then((data) => {
+		console.log(JSON.stringify(data))
+	}).catch((err) => {})
 
-	res.render('index', {data: apartments})
+	return
 })
 
 /*  This route render json data */
