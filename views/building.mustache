@@ -8,10 +8,7 @@
         <h1>{{name}} {{city}} {{state}}</h1>
         <br />
         {{#apartments}}
-            <h5>{{numBed}}</h5>
-            <h5>{{numBath}}</h5>
-            <h5>{{price}}</h5>
-            <h5>{{availability}}</h5>
+            {{>apartmentEdit}}
         {{/apartments}}
         <br />
         <form action="/{{slug}}" method="post">

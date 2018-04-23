@@ -28,6 +28,20 @@ router.get("/:buildingSlug", (req, res) => {
     })
 })
 
+router.post('/apartment/:id', (req, res) => {
+  let id = req.params.id
+  let newApartment = req.body
+  turbo.updateEntity('apartment', id, newApartment)
+  .then((data) => {
+    res.redirect('/')
+  })
+  .catch((err) => {
+    res.redirect('/')
+  })
+
+  return
+})
+
 router.post('/:buildingSlug', (req, res) => {
   let params = req.body
 
