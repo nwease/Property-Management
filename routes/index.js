@@ -3,13 +3,17 @@ const turbo = require("turbo360")({ site_id: process.env.TURBO_APP_ID })
 const vertex = require("vertex360")({ site_id: process.env.TURBO_APP_ID })
 const router = vertex.router()
 
-router.get("/", (req, res) => {
+const config = {
+  missingImage: "https://lh3.googleusercontent.com/c1zIxJ41LhtPnF_WYx8c-Ckyk2xygEtbhO5ltd0WaNFDtuAkESYRQINkxb_GHPMnjWhhLMp5kcy4EvuDdwMgWPQPRA"
+}
+
+router.get("/", function(req, res) {
   turbo.fetch("building", null).then(buildings => {
     res.render("index", { data: buildings })
   })
 })
 
-router.get("/:buildingSlug", (req, res) => {
+router.get("/:buildingSlug", function(req, res) {
   let building = {}
   turbo
     .fetch("building", { slug: req.params.buildingSlug })
@@ -28,10 +32,17 @@ router.get("/:buildingSlug", (req, res) => {
     })
 })
 
-router.post('/apartment/:id', (req, res) => {
+router.post('/apartment/:id', function(req, res) {
   let id = req.params.id
   let newApartment = req.body
-  turbo.updateEntity('apartment', id, newApartment)
+  if (!newApartment.mainImage){
+    console.log('hit?')
+    newApartment.mainImage = config.missingImage
+  }
+
+  turbo.updateEntity('apartment', id, {
+    newApartment
+  })
   .then((data) => {
     res.redirect('/')
   })
@@ -42,8 +53,12 @@ router.post('/apartment/:id', (req, res) => {
   return
 })
 
-router.post('/:buildingSlug', (req, res) => {
+router.post('/:buildingSlug', function(req, res) {
   let params = req.body
+  if (!params.mainImage){
+    console.log('hit?')
+    params.mainImage = config.missingImage
+  }
 
   turbo
     .fetch("building", { slug: req.params.buildingSlug })
