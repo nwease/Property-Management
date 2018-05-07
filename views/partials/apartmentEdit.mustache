@@ -1,23 +1,24 @@
-<div class="row">
-    <div class="col-sm-5">
-        <a href="{{mainImage}}" data-lightbox="true">
-			<img alt="Thumb" src="{{mainImage}}" />
-		</a>
-    </div>
-    <div class="col-sm-7">
-        <form action="/apartment/{{id}}" method="POST">
-            <div class="col-sm-12">
-                <label>Apartment Description</label>
-                <textarea name="description">{{description}}</textarea>
-            </div>
-            <div class="col-sm-4">
-                <label>Price</label>
-                <input type="text" name="price" value={{price}} />
-            </div>
-            <div class="col-sm-3">
-                <label>Bedrooms</label>
-                <div class="input-number">
-                    <input type="number" name="numBed" placeholder="Quantity" value="{{numBed}}" min="0" max="10" />
+<div style="margin-left:50px; margin-right:50px">
+    <div class="row">
+        <div class="col-sm-5">
+            <a href="{{mainImage}}" data-lightbox="true">
+			    <img alt="Thumb" src="{{mainImage}}" />
+		    </a>
+        </div>
+        <div class="col-sm-7">
+            <form action="/apartment/{{id}}" method="POST">
+                <div class="col-sm-12">
+                    <label>Apartment Description</label>
+                    <textarea name="description">{{description}}</textarea>
+                </div>
+                <div class="col-sm-4">
+                    <label>Price</label>
+                    <input type="text" name="price" value={{price}} />
+                </div>
+                <div class="col-sm-3">
+                    <label>Bedrooms</label>
+                    <div class="input-number">
+                        <input type="number" name="numBed" placeholder="Quantity" value="{{numBed}}" min="0" max="10" />
                     <div class="input-number__controls">
                         <span class="input-number__increase"><i class="stack-up-open"></i></span>
                         <span class="input-number__decrease"><i class="stack-down-open"></i></span>
@@ -38,4 +39,15 @@
             <button type="submit" placeholder="Submit">Submit</button>
         </form>
     </div>
+</div>
+
+<div class="row">
+    <h3>Current Photos</h3>
+    {{#remoteImages}}
+    <a href="{{url}}" rel="lightbox" data-lightbox="Gallery 1">
+	    <img alt="Thumb" src="{{url}}" style="height:100" />
+    </a>
+    {{/remoteImages}}
+    <button type="submit" class="btn-upload" id="{{id}}">Upload Photo</button>
+</div>
 </div>
