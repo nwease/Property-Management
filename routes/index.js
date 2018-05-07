@@ -14,6 +14,14 @@ router.get("/", function(req, res) {
   });
 });
 
+router.get("/login", function(req, res) {
+  res.render("login");
+});
+
+router.get("/admin", function(req, res) {
+  res.render("admin");
+});
+
 router.get("/:buildingSlug", function(req, res) {
   let building = {};
   turbo
@@ -99,5 +107,6 @@ router.get("/send", function(req, res) {
 router.get("/redirect", function(req, res) {
   res.redirect("https://www.turbo360.co/landing");
 });
+
 
 module.exports = router;
