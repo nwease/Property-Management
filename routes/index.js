@@ -18,8 +18,37 @@ router.get("/login", function(req, res) {
   res.render("login");
 });
 
+router.post('/login', function(req, res) {
+  console.log(req.body)
+  turbo.login(req.body)
+  .then(data => {
+    console.log(data)
+    req.vertexSession.user = {id: data.id} // set session with user ID
+  })
+  .catch(err => {
+    res.redirect('/error')
+  })
+})
+
 router.get("/admin", function(req, res) {
   res.render("admin");
+});
+
+router.post('/user', function(req, res) {
+  console.log(req.body)
+  turbo.createUser(req.body)
+  .then(data => {
+    console.log(data)
+    res.redirect('/admin')
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/error')
+  })
+})
+
+router.get("/error", function(req, res) {
+  res.redirect("/");
 });
 
 router.get("/:buildingSlug", function(req, res) {

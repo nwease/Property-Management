@@ -5,17 +5,18 @@
 <body class=" ">
     {{>nav}}
     <div class="main-container">
-        <form>
+        <form method="POST" action="/login" style="margin-left: 100px; margin-right: 100px">
             <br/>
-            <div class="col-sm-8">
-                <label>Email Address:</label>
-                <input type="email" name="email" placeholder="Email Address">
+            <div class="col-sm-12">
+                <label>Email:</label>
+                <input type="email" name="email" placeholder="Email">
             </div>
             <br />
-            <div class="col-sm-8">
+            <div class="col-sm-12">
                 <label>Password:</label>
                 <input type="password" name="password" placeholder="Password">
             </div>
+            <button type="submit" class="col-sm-12 btn btn-primary">Login</button>
         </form>
     </div>
     {{>footer}} {{>scripts}} {{>lightbox}}
