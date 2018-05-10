@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+{{>head}}
+
+<body class=" ">
+    {{>nav}}
+    <h1>ADMIN PORTAL</h1>
+    <div class="main-container">
+        <h3></h3>
+        <form method="POST" action="/user" style="margin-left: 100px; margin-right: 100px">
+            <br/>
+            <div class="col-sm-12">
+                <label>First Name:</label>
+                <input type="text" name="firstName" placeholder="First Name">
+            </div>
+            <br />
+            <div class="col-sm-12">
+                <label>Last Name:</label>
+                <input type="text" name="lastName" placeholder="Last Name">
+            </div>
+            <br />
+            <div class="col-sm-12">
+                <label>Email:</label>
+                <input type="email" name="email" placeholder="Email">
+            </div>
+            <br />
+            <div class="col-sm-12">
+                <label>Password:</label>
+                <input type="password" name="password" placeholder="Password">
+            </div>
+            <br />
+            <div class="col-sm-12">
+                <label>Account Type:</label>
+                <input type="text" name="accountType" value="Tenent">
+            </div>
+            <br />
+            <button type="submit" class="col-sm-12 btn btn-primary">Login</button>
+        </form>
+    </div>
+    {{>footer}} {{>scripts}}
+</body>
+
+</html>

@@ -14,7 +14,7 @@ body:after {
 }
 
 .lightbox {
-    position: fixed;
+    /*position: absolute;*/
     top: 50% !important;
    	transform: translate3d(0,-50%,0);
     left: 0;
